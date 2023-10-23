@@ -1,7 +1,7 @@
 package application
 
 import domain.Cart
-import domain.CartItem
+import domain.Item
 import domain.Product
 
 
@@ -12,8 +12,10 @@ fun main(args: Array<String>) {
     val sonyHeadphone = Product("Sony Wireless headphone")
     cart.add(sonyHeadphone, 1)
 
+    cart.remove(applePencil)
+
     println("Cart = $cart")
-    val products: List<CartItem> = cart.getProducts()
+    val products: List<Item> = cart.getProducts()
 
     println("----------------------------------------")
     println("products = $products")

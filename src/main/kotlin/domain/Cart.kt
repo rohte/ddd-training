@@ -2,19 +2,23 @@ package domain
 
 
 class Cart {
-    private val products: MutableList<CartItem> = ArrayList()
+    private val items: MutableList<Item> = ArrayList()
 
     fun add(product: Product, quantity: Int) {
-        products.add(CartItem(product,quantity))
+        items.add(Item(product,quantity))
     }
 
-    fun getProducts(): List<CartItem> {
-        return products.toList()
+    fun remove(product: Product) {
+        items.removeIf { it.product == product }
+    }
+
+    fun getProducts(): List<Item> {
+        return items.toList()
     }
 
     override fun toString(): String {
         return "Cart{" +
-                "products=" + products +
+                "items=" + items +
                 '}'
     }
 }

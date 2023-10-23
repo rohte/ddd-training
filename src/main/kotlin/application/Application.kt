@@ -15,6 +15,7 @@ fun main(args: Array<String>) {
     cart.remove(applePencil)
 
     println("Cart = $cart")
+    println("Removed items from cart = " + cart.getRemovedItems())
     val products: List<Item> = cart.getProducts()
 
     println("----------------------------------------")

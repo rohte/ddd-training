@@ -9,7 +9,7 @@ class Cart {
     }
 
     fun getProducts(): List<Product> {
-        return products
+        return products.toList()
     }
 
     override fun toString(): String {

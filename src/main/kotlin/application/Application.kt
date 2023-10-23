@@ -16,7 +16,7 @@ fun main(args: Array<String>) {
 
     println("Cart = $cart")
     println("Removed items from cart = " + cart.getRemovedItems())
-    val products: List<Item> = cart.getProducts()
+    val products: List<Item> = cart.items()
 
     println("----------------------------------------")
     println("products = $products")

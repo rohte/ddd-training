@@ -1,5 +1,6 @@
 package domain
 
+import domain.events.CartCheckedOutEvent
 import domain.events.DomainEvent
 import domain.events.ItemAddedToCartEvent
 import domain.events.ItemRemovedFromCartEvent
@@ -43,6 +44,14 @@ class Cart {
         return history
             .filterIsInstance<ItemRemovedFromCartEvent>()
             .map { it.item }
+    }
+
+    fun checkout() {
+        history.add(CartCheckedOutEvent())
+    }
+
+    val isCheckedOut: Boolean get() {
+        return history.any { it is CartCheckedOutEvent }
     }
 
     override fun toString(): String {

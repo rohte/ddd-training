@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.math.BigDecimal
 import java.math.BigDecimal.ONE
+import kotlin.test.assertFalse
 import kotlin.test.assertNotEquals
+import kotlin.test.assertTrue
 
 class CartTest {
 
@@ -76,5 +78,18 @@ class CartTest {
         cart2.add(product, 2)
 
         assertNotEquals(cart1, cart2)
+    }
+
+    @Test
+    fun `should check out a cart`() {
+        val product = Product("Some test product", oneDollar)
+        val cart1 = Cart()
+        cart1.add(product, 2)
+
+        assertFalse(cart1.isCheckedOut)
+
+        cart1.checkout()
+
+        assertTrue(cart1.isCheckedOut)
     }
 }

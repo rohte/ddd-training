@@ -2,7 +2,7 @@ package domain;
 
 import java.math.BigDecimal
 
-class CompetitivePricing {
+class CompetitorBasedPricer {
 
     val competitorPrices:Map<String, Price> = mapOf(
         "Apple Pencil" to Price(BigDecimal(9)),

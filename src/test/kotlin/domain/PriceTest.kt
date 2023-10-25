@@ -10,7 +10,7 @@ class PriceTest {
     fun `should calculate a discount of 10 percent`() {
         var price = Price(BigDecimal.TEN)
 
-        var discount = price.getDiscount()
+        var discount = price.reduceByPercentage(BigDecimal.TEN)
 
         assertEquals(discount, Price(BigDecimal(9)))
     }

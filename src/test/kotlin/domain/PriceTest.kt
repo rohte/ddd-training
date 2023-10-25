@@ -12,6 +12,6 @@ class PriceTest {
 
         var discount = price.getDiscount()
 
-        assertEquals(discount, BigDecimal(9))
+        assertEquals(discount, Price(BigDecimal(9)))
     }
 }

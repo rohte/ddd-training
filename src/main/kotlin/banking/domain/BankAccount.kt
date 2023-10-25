@@ -1,3 +1,5 @@
 package banking.domain
 
-data class BankAccount(val address: Address)
+import java.util.UUID
+
+data class BankAccount(val uuid: UUID, val address: Address)

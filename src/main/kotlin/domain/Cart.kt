@@ -1,12 +1,15 @@
 package domain
 
+import domain.events.DomainEvent
+import domain.events.ItemAddedToCartEvent
+import domain.events.ItemRemovedFromCartEvent
 import java.util.UUID
 
 
 class Cart {
     private val id: UUID = UUID.randomUUID()
     private val items: MutableList<Item> = ArrayList()
-    private val removedItems: MutableList<Item> = ArrayList()
+    private val history: MutableList<DomainEvent> = ArrayList()
 
     fun add(product: Product, quantity: Int) {
         if (hasProduct(product)) {
@@ -18,6 +21,7 @@ class Cart {
         } else {
             items.add(Item(product, quantity))
         }
+        history.add(ItemAddedToCartEvent(Item(product, quantity)))
     }
 
     private fun hasProduct(product: Product): Boolean {
@@ -27,7 +31,7 @@ class Cart {
     fun remove(product: Product) {
         items.find { it.product == product }?.let {
             items.remove(it)
-            removedItems.add(it)
+            history.add(ItemRemovedFromCartEvent(it))
         }
     }
 
@@ -36,7 +40,9 @@ class Cart {
     }
 
     fun getRemovedItems(): List<Item> {
-        return removedItems.toList()
+        return history
+            .filterIsInstance<ItemRemovedFromCartEvent>()
+            .map { it.item }
     }
 
     override fun toString(): String {

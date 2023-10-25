@@ -1,5 +1,5 @@
-package domain.events
+package retail.domain.events
 
-import domain.Item
+import retail.domain.Item
 
 data class ItemRemovedFromCartEvent(val item: Item): DomainEvent

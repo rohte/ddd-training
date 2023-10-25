@@ -1,6 +1,6 @@
 package application
 
-import domain.*
+import retail.domain.*
 import java.math.BigDecimal
 
 

@@ -1,4 +1,4 @@
-package domain
+package retail.domain
 
 import jdk.jfr.Percentage
 import java.math.BigDecimal

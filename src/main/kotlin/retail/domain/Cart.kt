@@ -1,9 +1,9 @@
-package domain
+package retail.domain
 
-import domain.events.CartCheckedOutEvent
-import domain.events.DomainEvent
-import domain.events.ItemAddedToCartEvent
-import domain.events.ItemRemovedFromCartEvent
+import retail.domain.events.CartCheckedOutEvent
+import retail.domain.events.DomainEvent
+import retail.domain.events.ItemAddedToCartEvent
+import retail.domain.events.ItemRemovedFromCartEvent
 import java.util.UUID
 
 

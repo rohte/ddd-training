@@ -2,14 +2,19 @@ package domain
 
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import java.math.BigDecimal
+import java.math.BigDecimal.ONE
 import kotlin.test.assertNotEquals
 
 class CartTest {
 
+    private val oneDollar = Price(ONE)
+    private val tenDollars = Price(BigDecimal.TEN)
+
     @Test
     fun `should add product to cart`() {
         val cart = Cart()
-        val product = Product("Some test product")
+        val product = Product("Some test product", oneDollar)
         cart.add(product, 1)
         val actual = cart.items()
         assertEquals(1, actual.size)
@@ -20,7 +25,7 @@ class CartTest {
     @Test
     fun `should only add one item to cart`() {
         val cart = Cart()
-        val product = Product("Some test product")
+        val product = Product("Some test product", oneDollar)
         cart.add(product, 1)
         cart.add(product, 3)
         val actual = cart.items()
@@ -32,9 +37,9 @@ class CartTest {
     @Test
     fun `should remove product from cart`() {
         val cart = Cart()
-        val product1 = Product("Some test product")
+        val product1 = Product("Some test product", oneDollar)
         cart.add(product1, 2)
-        val product2 = Product("Some other test product")
+        val product2 = Product("Some other test product", oneDollar)
         cart.add(product2, 3)
 
         cart.remove(product1)
@@ -48,9 +53,9 @@ class CartTest {
     @Test
     fun `should add removed product from cart to history of removed products`() {
         val cart = Cart()
-        val product1 = Product("Some test product")
+        val product1 = Product("Some test product", oneDollar)
         cart.add(product1, 2)
-        val product2 = Product("Some other test product")
+        val product2 = Product("Some other test product", tenDollars)
         cart.add(product2, 3)
 
         cart.remove(product1)
@@ -63,7 +68,7 @@ class CartTest {
 
     @Test
     fun `should recognise carts are different even with same content`() {
-        val product = Product("Some test product")
+        val product = Product("Some test product", oneDollar)
         val cart1 = Cart()
         cart1.add(product, 2)
 

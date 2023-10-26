@@ -8,10 +8,20 @@ class PriceTest {
 
     @Test
     fun `should calculate a discount of 10 percent`() {
-        var price = Price(BigDecimal.TEN)
+        val price = Price(BigDecimal.TEN)
 
-        var discount = price.reduceByPercentage(BigDecimal.TEN)
+        val discount = price.reduceByPercentage(BigDecimal.TEN)
 
         assertEquals(discount, Price(BigDecimal(9)))
+    }
+
+    @Test
+    fun `should add two prices`() {
+        val price1 = Price(BigDecimal.TEN)
+        val price2 = Price(BigDecimal.ONE)
+
+        val result = price1 + price2
+
+        assertEquals(Price(BigDecimal(11)), result)
     }
 }

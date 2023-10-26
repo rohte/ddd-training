@@ -11,7 +11,7 @@ class OrderServiceTest {
 
     @Test
     fun `should create simple order`() {
-        val product = Product("Apple Pencil", Price(BigDecimal.TEN))
+        val product = Product("Apple Pencil", Price(BigDecimal.TEN), 100)
         val cart = Cart()
         cart.add(product, 1)
 
@@ -23,8 +23,8 @@ class OrderServiceTest {
 
     @Test
     fun `should create order with multiple items`() {
-        val product = Product("Apple Pencil", tenDollars)
-        val product1 = Product("Some test product", oneDollar)
+        val product = Product("Apple Pencil", tenDollars, 100)
+        val product1 = Product("Some test product", oneDollar, 100)
         val cart = Cart()
         cart.add(product, 2)
         cart.add(product1, 3)

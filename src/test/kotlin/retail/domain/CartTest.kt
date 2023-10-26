@@ -16,7 +16,7 @@ class CartTest {
     @Test
     fun `should add product to cart`() {
         val cart = Cart()
-        val product = Product("Some test product", oneDollar)
+        val product = Product("Some test product", oneDollar, 100)
         cart.add(product, 1)
         val actual = cart.items()
         assertEquals(1, actual.size)
@@ -27,7 +27,7 @@ class CartTest {
     @Test
     fun `should only add one item to cart`() {
         val cart = Cart()
-        val product = Product("Some test product", oneDollar)
+        val product = Product("Some test product", oneDollar, 100)
         cart.add(product, 1)
         cart.add(product, 3)
         val actual = cart.items()
@@ -39,9 +39,9 @@ class CartTest {
     @Test
     fun `should remove product from cart`() {
         val cart = Cart()
-        val product1 = Product("Some test product", oneDollar)
+        val product1 = Product("Some test product", oneDollar, 100)
         cart.add(product1, 2)
-        val product2 = Product("Some other test product", oneDollar)
+        val product2 = Product("Some other test product", oneDollar, 100)
         cart.add(product2, 3)
 
         cart.remove(product1)
@@ -55,9 +55,9 @@ class CartTest {
     @Test
     fun `should add removed product from cart to history of removed products`() {
         val cart = Cart()
-        val product1 = Product("Some test product", oneDollar)
+        val product1 = Product("Some test product", oneDollar, 100)
         cart.add(product1, 2)
-        val product2 = Product("Some other test product", tenDollars)
+        val product2 = Product("Some other test product", tenDollars, 100)
         cart.add(product2, 3)
 
         cart.remove(product1)
@@ -70,7 +70,7 @@ class CartTest {
 
     @Test
     fun `should recognise carts are different even with same content`() {
-        val product = Product("Some test product", oneDollar)
+        val product = Product("Some test product", oneDollar, 100)
         val cart1 = Cart()
         cart1.add(product, 2)
 
@@ -82,7 +82,7 @@ class CartTest {
 
     @Test
     fun `should check out a cart`() {
-        val product = Product("Some test product", oneDollar)
+        val product = Product("Some test product", oneDollar, 100)
         val cart1 = Cart()
         cart1.add(product, 2)
 

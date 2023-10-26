@@ -1,4 +1,4 @@
 package retail.domain
 
-data class Product(val name: String? = null, val price: Price)
+data class Product(val name: String? = null, val price: Price, val weightInGrams: Int)
 

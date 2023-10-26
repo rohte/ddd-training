@@ -7,9 +7,13 @@ import java.math.BigDecimal
 fun main(args: Array<String>) {
     val cart = Cart()
     var competitorBasedPricer = CompetitorBasedPricer()
-    val applePencil = Product("Apple Pencil", competitorBasedPricer.getPrice("Apple Pencil",Price(BigDecimal.TEN)))
+    val applePencil = Product("Apple Pencil", competitorBasedPricer.getPrice("Apple Pencil",Price(BigDecimal.TEN)), 100)
     cart.add(applePencil, 2)
-    val sonyHeadphone = Product("Sony Wireless headphone", competitorBasedPricer.getPrice("Sony Wireless headphone",Price(BigDecimal.ONE)))
+    val sonyHeadphone = Product(
+        "Sony Wireless headphone",
+        competitorBasedPricer.getPrice("Sony Wireless headphone",Price(BigDecimal.ONE)),
+        100
+    )
     cart.add(sonyHeadphone, 3)
 
     cart.remove(applePencil)
